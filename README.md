@@ -55,6 +55,8 @@ name: ci
 
 on:
   push:
+    branches:
+      - 'main'
 
 jobs:
   docker:
@@ -67,17 +69,11 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: user/app:latest
+          tags: vtechhiltz/cpsy-350-ci:latest
 ```
 
 Be careful because **any file mutation in the steps that precede the build step
