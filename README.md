@@ -61,12 +61,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       -
@@ -77,7 +71,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: user/app:latest
+          tags: vtechhiltz/cpsy-350-ci:latest
 ```
 
 Be careful because **any file mutation in the steps that precede the build step
